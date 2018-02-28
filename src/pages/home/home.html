@@ -11,6 +11,20 @@
   <h3>Star War characters</h3>
 
   <ion-content>
+
+    <ion-list>
+      <ion-item *ngFor="let list of film">
+        <ion-thumbnail item-start>
+          <img src="../../assets/imgs/starwars.jpg">
+        </ion-thumbnail>
+        <h2>{{list.title}}</h2>
+        <p>{{list.opening_crawl}}</p>
+        <p>Diretor: {{list.director}}</p>
+        <p>Produtor: {{list.producer}}</p>
+        <button ion-button clear item-end>View</button>
+      </ion-item>
+    </ion-list>
+
     <ion-list>
       <ion-item *ngFor="let list of loading">
         <h2>{{list.name}}</h2>
