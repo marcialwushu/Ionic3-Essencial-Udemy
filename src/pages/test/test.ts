@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 
+import { HttpClient } from '@angular/common/http';
+
 import 'rxjs/add/operator/map';
+import { Http } from '@angular/http';
+
 
 
 @IonicPage()
@@ -13,14 +17,23 @@ import 'rxjs/add/operator/map';
 export class TestPage {
 
   public film = new Array<any>();
+  public starship = new Array<any>();
+  private url:string = 'https://swapi.co/api';
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public alertCtrl: AlertController,
-    public restProvider: RestProvider
+    public restProvider: RestProvider,
+    public http: Http
   ) {
     this.getFilms();
+
+    this.http.get(this.url + '/starships')
+      .map(res => res.json())
+      .subscribe(data => {
+        console.log(data);
+      })
   }
 
   ionViewDidLoad() {
