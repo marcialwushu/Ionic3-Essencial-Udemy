@@ -17,7 +17,7 @@ import { Http } from '@angular/http';
 export class TestPage {
 
   public film = new Array<any>();
-  public starship = new Array<any>();
+  public starship : Array<{}>; 
   private url:string = 'https://swapi.co/api';
 
   constructor(
@@ -32,8 +32,8 @@ export class TestPage {
     this.http.get(this.url + '/starships')
       .map(res => res.json())
       .subscribe(data => {
-        console.log(data);
-      })
+        this.starship = data;
+      });
   }
 
   ionViewDidLoad() {
