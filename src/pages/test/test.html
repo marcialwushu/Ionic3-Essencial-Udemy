@@ -27,6 +27,11 @@
       <button ion-button full (click)="showAlert()">Logar</button>
     </ion-item>
 
+    <ion-item *ngFor="let list of film">
+      <h2>{{list.title}}</h2>
+      <p>{{list.opening_crawl}}</p>
+    </ion-item>
+
   </ion-list>
 
 </ion-content>

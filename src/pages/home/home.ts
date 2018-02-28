@@ -16,12 +16,13 @@ import 'rxjs/add/operator/map';
   selector: 'page-home',
   templateUrl: 'home.html',
   providers: [
-    
+    RestProvider
   ]
 })
 export class HomePage {
   
   public loading = new Array<any>();
+  public film = new Array<any>();
   
 
   
@@ -33,6 +34,7 @@ export class HomePage {
    
   ) {
     this.getPeople();
+    this.getFilms();
     
   }
 
@@ -46,6 +48,19 @@ export class HomePage {
         this.loading = this.loading.concat(response.results);
       })
   }
+
+  getFilms(){
+    this.restProvider.getFilms().subscribe
+    (data => {
+      console.log(data);
+      const response = (data as any);
+      this.film = this.film.concat(response.results);
+
+    })
+  }
+
+  
+
 
   goToTestPage(){
     this.navCtrl.push(TestPage);

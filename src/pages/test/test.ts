@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { RestProvider } from '../../providers/rest/rest';
 
+import 'rxjs/add/operator/map';
 
 
 @IonicPage()
@@ -10,11 +12,15 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class TestPage {
 
+  public film = new Array<any>();
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public restProvider: RestProvider
   ) {
+    this.getFilms();
   }
 
   ionViewDidLoad() {
@@ -29,5 +35,15 @@ export class TestPage {
     });
     alert.present();
   }
+
+  getFilms(){
+    this.restProvider.getFilms().subscribe
+    (data => {
+      console.log(data);
+      const response = (data as any);
+      this.film = this.film.concat(response.results);
+    })
+  }
+
 
 }

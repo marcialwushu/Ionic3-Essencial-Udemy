@@ -20,4 +20,8 @@ export class RestProvider {
     return this.http.get(this.apiUrl + '/people');
   }
 
+  getFilms(){
+    return this.http.get(this.apiUrl + '/films');
+  }
+
 }

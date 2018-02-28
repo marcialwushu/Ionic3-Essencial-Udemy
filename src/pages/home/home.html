@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <h3>Star War characters</h3>
 
   <ion-content>
     <ion-list>
@@ -16,6 +16,12 @@
         <h2>{{list.name}}</h2>
         <p>{{list.mass}}</p>
         <p>{{list.terrain}}</p>
+        <button full>Detalhes</button>
+      </ion-item>
+
+      <ion-item *ngFor="let list of film">
+        <h2>{{list.title}}</h2>
+        <p>{{list.opening_crawl}}</p>
       </ion-item>
     </ion-list>
   </ion-content>
