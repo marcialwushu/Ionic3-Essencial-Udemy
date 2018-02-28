@@ -31,7 +31,8 @@
       <h2>{{list.title}}</h2>
       <p>{{list.opening_crawl}}</p>
     </ion-item>
-
+    <button ion-item *ngFor="let star of starship">{{star.mame}}</button>
+        
   </ion-list>
 
 </ion-content>

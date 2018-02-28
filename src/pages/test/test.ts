@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
 
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 
 import 'rxjs/add/operator/map';
 import { Http } from '@angular/http';
