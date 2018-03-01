@@ -30,13 +30,10 @@
         <h2>{{list.name}}</h2>
         <p>{{list.mass}}</p>
         <p>{{list.terrain}}</p>
-        <button ion-button full>Detalhes</button>
+        <button ion-button full (click)="goToTestPage(list.id)">Detalhes</button>
       </ion-item>
 
-      <ion-item *ngFor="let list of film">
-        <h2>{{list.title}}</h2>
-        <p>{{list.opening_crawl}}</p>
-      </ion-item>
+      
     </ion-list>
   </ion-content>
 

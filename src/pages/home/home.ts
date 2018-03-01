@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TestPage } from '../test/test';
-import { Http, Response } from '@angular/http';
+//import { Http, Response } from '@angular/http';
 //import { HttpClient } from '@angular/common/http';
 
 import { RestProvider } from '../../providers/rest/rest';
@@ -39,8 +39,6 @@ export class HomePage {
   }
 
   getPeople(){
-
-
     this.restProvider.getPeople().subscribe
       (data => {
         console.log(data);
@@ -58,12 +56,12 @@ export class HomePage {
 
     })
   }
-
-  
-
-
-  goToTestPage(){
-    this.navCtrl.push(TestPage);
+    
+  goToTestPage(id){
+    
+    this.navCtrl.push(TestPage, {
+      'loading': id
+    });
   }
 
   

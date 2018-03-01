@@ -32,7 +32,7 @@ export class TestPage {
     this.http.get(this.url + '/starships')
       .map(res => res.json())
       .subscribe(data => {
-        this.starship = data;
+        console.log(data);
       });
   }
 
