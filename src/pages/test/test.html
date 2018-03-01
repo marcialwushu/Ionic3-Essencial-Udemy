@@ -4,7 +4,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>test</ion-title>
+    <ion-title>StarWars</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -12,31 +12,25 @@
 
 <ion-content padding>
 
-  <ion-list>
 
-    <ion-item>
-      <ion-label floating>Username</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <ion-item>
-      <button ion-button full (click)="showAlert()">Logar</button>
-    </ion-item>
+  <ion-card *ngFor="let list of film">
+    <img src="../../assets/imgs/starwars.jpg" />
+    <ion-card-content>
+      <ion-card-title>
+        {{list.title}}
+      </ion-card-title>
+      <p>
+        {{list.opening_crawl}}
+      </p>
+      <br>
+      <p><strong>Diretor:</strong> {{list.director}}</p>
+      <p>Produtor: {{list.producer}}</p>
+    </ion-card-content>
+  </ion-card>
 
-    <ion-item *ngFor="let list of film">
-      <h2>{{list.title}}</h2>
-      <p>{{list.opening_crawl}}</p>
 
-    </ion-item>
-    <ion-item *ngFor="let star of starship">
-      <p>{{star.name}}</p>
-    </ion-item>
-    
-        
-  </ion-list>
+
+
 
 </ion-content>
