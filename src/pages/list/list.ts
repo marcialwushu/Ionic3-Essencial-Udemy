@@ -16,11 +16,12 @@ export class ListPage {
   private url:string = 'https://beer.symfonycasts.com.br/v1';
   selectedItem: any;
   icons: string[];
-  items = {
+  public items = {
     name: "", 
     price: "", 
     type: "", 
-    mark: ""
+    mark: "",
+    img: ""
   };
 
   constructor(
@@ -31,6 +32,22 @@ export class ListPage {
     private camera: Camera
   ) {
     
+  }
+
+  getPhoto(){
+    const options: CameraOptions = {
+      quality: 100,
+      destinationType: this.camera.DestinationType.DATA_URL,
+      encodingType: this.camera.EncodingType.JPEG,
+      mediaType: this.camera.MediaType.PICTURE
+    }
+
+    this.camera.getPicture(options).then((ImageData) => {
+      let base64Image = 'data:image/jpeg;base64' + ImageData;
+      this.items.img = base64Image;
+    }, (err) => {
+      console.log(err);
+    });
   }
 
   saveItems(items){
