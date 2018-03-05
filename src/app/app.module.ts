@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { Camera } from '@ionic-native/camera';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { HttpModule } from '@angular/http';
@@ -39,6 +40,7 @@ import { RestProvider } from '../providers/rest/rest';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
+    Camera
     
   ]
 })

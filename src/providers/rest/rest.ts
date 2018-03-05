@@ -11,6 +11,7 @@ import { Injectable } from '@angular/core';
 export class RestProvider {
 
   private apiUrl = 'https://swapi.co/api';
+  private apiBeer = 'https://beer.symfonycasts.com.br/v1';
 
   constructor(public http: HttpClient) {
     console.log('Hello RestProvider Provider');
@@ -22,6 +23,10 @@ export class RestProvider {
 
   getFilms(){
     return this.http.get(this.apiUrl + '/films');
+  }
+
+  getBeer(){
+    return this.http.get(this.apiBeer + '/beers');
   }
 
 }

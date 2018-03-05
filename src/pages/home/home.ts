@@ -1,6 +1,8 @@
+
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TestPage } from '../test/test';
+
 //import { Http, Response } from '@angular/http';
 //import { HttpClient } from '@angular/common/http';
 
@@ -23,6 +25,7 @@ export class HomePage {
   
   public loading = new Array<any>();
   public film = new Array<any>();
+  public beer = new Array<any>();
   
 
   
@@ -35,6 +38,7 @@ export class HomePage {
   ) {
     this.getPeople();
     this.getFilms();
+    this.getBeer();
     
   }
 
@@ -54,6 +58,16 @@ export class HomePage {
       const response = (data as any);
       this.film = this.film.concat(response.results);
 
+    })
+  }
+
+  getBeer(){
+    this.restProvider.getBeer().subscribe
+    (data => {
+      console.log(data);
+      const response = (data as any);
+      this.beer = this.beer.concat(response.results);
+      
     })
   }
     

@@ -1,7 +1,9 @@
+import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Http, Headers, RequestOptions } from '@angular/http';
 import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { ToastController } from 'ionic-angular';
 
@@ -25,7 +27,8 @@ export class ListPage {
     public navCtrl: NavController,
     private toastCtrl: ToastController, 
     public navParams: NavParams,
-    public http: Http
+    public http: Http,
+    private camera: Camera
   ) {
     
   }
@@ -45,6 +48,14 @@ export class ListPage {
           });
           toast.present();
         });
+  }
+
+  getBeerInfo(id){
+    this.navCtrl.push(ListPage,
+    {
+      'beer+id' : id,
+      'api_url' : this.url
+    });
   }
   
 

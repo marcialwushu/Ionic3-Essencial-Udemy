@@ -32,9 +32,15 @@
         <p>{{list.terrain}}</p>
         <button ion-button full (click)="goToTestPage(list.id)">Detalhes</button>
       </ion-item>
-
       
     </ion-list>
+
+    <ion-list>
+      <ion-item *ngFor="let b of beer"> 
+        <p></p>
+      </ion-item>
+    </ion-list>
+
   </ion-content>
 
   <button ion-button secondary menuToggle>Toggle Menu</button>
