@@ -1,3 +1,4 @@
+import { LoginPage } from './../pages/login/login';
 import { IonicStorageModule } from '@ionic/storage';
 import { BrowserModule } from '@angular/platform-browser';
 import { Camera } from '@ionic-native/camera';
@@ -23,7 +24,8 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -37,7 +39,8 @@ import { AuthProvider } from '../providers/auth/auth';
     MyApp,
     HomePage,
     ListPage,
-    TestPage
+    TestPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
