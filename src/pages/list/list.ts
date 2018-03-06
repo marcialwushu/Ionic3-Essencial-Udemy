@@ -1,3 +1,4 @@
+import { AuthProvider } from './../../providers/auth/auth';
 import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
@@ -29,9 +30,14 @@ export class ListPage {
     private toastCtrl: ToastController, 
     public navParams: NavParams,
     public http: Http,
-    private camera: Camera
+    private camera: Camera,
+    public authService: AuthProvider
   ) {
     
+  }
+
+  ionViewCanEnter(){
+   return this.authService.userIsLogged();
   }
 
   getPhoto(){

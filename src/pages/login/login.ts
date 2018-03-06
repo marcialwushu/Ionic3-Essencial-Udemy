@@ -22,7 +22,11 @@ export class LoginPage {
   }
 
   login(){
-    this.authService.login(this.credential)
+    this.authService.login(this.credential);
+  }
+
+  logout(){
+    this.authService.logout();
   }
 
   ionViewDidLoad() {

@@ -1,3 +1,4 @@
+import { ToastController } from 'ionic-angular';
 import { RequestOptions, Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -5,10 +6,11 @@ import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class AuthProvider {
-
+  private msg: string = 'É preciso logar para acessar!';
   constructor(
     public http: HttpClient,
-    public storage: Storage
+    public storage: Storage,
+    public toastCtrl: ToastController
   ) {
     
   }
@@ -28,9 +30,15 @@ export class AuthProvider {
 
   userIsLogged(){
     return this.storage.get('token').then(val => {
-      if(val !== undefined){
+      if(val){
         return val;
       } else {
+        let toast = this.toastCtrl.create({
+          message: this.msg,
+          duration: 3000
+        });
+        toast.present();
+        
         return false; 
       }
     });
