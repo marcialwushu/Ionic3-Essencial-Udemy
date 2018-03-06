@@ -1,3 +1,4 @@
+import { RequestOptions, Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
@@ -12,8 +13,17 @@ export class AuthProvider {
     
   }
 
-  login(){
+  login(credentials){
+    let headers = new Headers();
+    headers.append('Content-Type', 'aplication/json');
 
+    let options = new RequestOptions({ headers: headers });
+
+    this.http.post('https://beer.symfonycasts.com.br/v1/auth/login', credentials, options)
+        .map(res => { res.json() })
+        .subscribe(data => {
+          this.storage.set('token', data.token); 
+        });
   }
 
   userIsLogged(){
