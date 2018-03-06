@@ -17,6 +17,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestProvider } from '../providers/rest/rest';
 import { AuthProvider } from '../providers/auth/auth';
+import { IonicStorageProvider } from '../providers/ionic-storage/ionic-storage';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { AuthProvider } from '../providers/auth/auth';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestProvider,
     Camera,
-    AuthProvider
+    AuthProvider,
+    IonicStorageProvider
     
   ]
 })

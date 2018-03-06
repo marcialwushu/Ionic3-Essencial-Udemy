@@ -1,3 +1,5 @@
+import { IonicStorageProvider } from './../ionic-storage/ionic-storage';
+
 import { ToastController } from 'ionic-angular';
 import { RequestOptions, Headers } from '@angular/http';
 import { HttpClient } from '@angular/common/http';
@@ -7,12 +9,31 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class AuthProvider {
   private msg: string = 'É preciso logar para acessar!';
+  private chave_token: string = "token";
+
   constructor(
     public http: HttpClient,
     public storage: Storage,
-    public toastCtrl: ToastController
+    public toastCtrl: ToastController,
+    private _storage: IonicStorageProvider
   ) {
     
+  }
+
+  setToken(valor: string) {
+    this._storage.set(this.chave_token, valor);
+  }
+
+  logged(){
+    this._storage.get("token").then((val) => {
+      console.log(val);
+      if(val === null || val === ''){
+        return false;
+      }
+      return true;
+    }).catch(() => {
+      return false;
+    });
   }
 
   login(credentials){
@@ -20,7 +41,7 @@ export class AuthProvider {
     headers.append('Content-Type', 'aplication/json');
 
     let options = new RequestOptions({ headers: headers });
-
+    
     this.http.post('https://beer.symfonycasts.com.br/v1/auth/login', credentials, options)
         .map(res => { res.json() })
         .subscribe(data => {
