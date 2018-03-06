@@ -29,6 +29,13 @@
   </ion-item>
 
   <p>
+    <button color="danger" ion-button full (click)="getPhoto()">
+      <ion-icon name="camera">Tirar Foto</ion-icon>
+    </button>
+    <img src="{{items.img}}" alt="" *ngIf="items.img" width="100%" height="150px">
+  </p>
+
+  <p>
     <button ion-button full (click)="saveItems(items)">Cadastrar</button>
   </p>
 
