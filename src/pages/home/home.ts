@@ -11,6 +11,7 @@ import { RestProvider } from '../../providers/rest/rest';
 
 
 import 'rxjs/add/operator/map';
+import { AuthProvider } from '../../providers/auth/auth';
 
 
 @IonicPage() 
@@ -33,7 +34,8 @@ export class HomePage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public restProvider: RestProvider
+    public restProvider: RestProvider,
+    public authService: AuthProvider
    
   ) {
     this.getPeople();
@@ -77,6 +79,10 @@ export class HomePage {
       'loading': id
     });
   }
+
+  ionViewCanEnter(){
+    return this.authService.logged();
+   }
 
   
 }

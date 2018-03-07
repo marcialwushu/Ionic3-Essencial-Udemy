@@ -27,13 +27,19 @@ export class AuthProvider {
   logged(){
     this._storage.get("token").then((val) => {
       console.log(val);
-      if(val === null || val === ''){
+      if(val){
+        return val;
+      } else {
+        let toast = this.toastCtrl.create({
+          message: this.msg,
+          duration: 3000
+        });
+        toast.present();
+        
         return false;
       }
-      return true;
-    }).catch(() => {
-      return false;
-    });
+      
+    })
   }
 
   login(credentials){
